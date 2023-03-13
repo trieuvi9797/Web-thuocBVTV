@@ -22,10 +22,10 @@
     {{-- <script src="../ckeditor.js"></script> --}}
 </head>
 <body class="app">   	
+    
+    @include('admin.layouts.header')
+    @include('admin.layouts.sidebar')
 
-@include('admin.layouts.header')
-
-@include('admin.layouts.sidebar')
     
     <div class="app-wrapper">
 

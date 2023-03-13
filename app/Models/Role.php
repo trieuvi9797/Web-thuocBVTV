@@ -13,6 +13,7 @@ class Role extends ModelsRole
     protected $fillable = [
         'name',
         'display_name',
-        'group'
+        'group',
+        'guard_name'
     ];
 }

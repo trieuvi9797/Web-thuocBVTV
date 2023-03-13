@@ -132,5 +132,3 @@
             </div><!--//app-header-content-->
         </div><!--//container-fluid-->
     </div><!--//app-header-inner-->
-
-</header><!--//app-header-->

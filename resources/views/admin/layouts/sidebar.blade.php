@@ -158,3 +158,4 @@
         </nav>
     </div><!--//sidepanel-inner-->
 </div><!--//app-sidepanel-->
+</header><!--//app-header-->
