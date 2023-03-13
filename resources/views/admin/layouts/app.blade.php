@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title></title>
+    <title> @yield('title', 'Trang quản trị') </title>
         
     <!-- Meta -->
     <meta charset="utf-8">
@@ -26,7 +26,11 @@
 @include('admin.layouts.header')
 
 @include('admin.layouts.sidebar')
+    
+    <div class="app-wrapper">
 
-@yield('content')
+    @yield('content')
+
+    </div><!--//app-content-->
 
 @include('admin.layouts.footer')
