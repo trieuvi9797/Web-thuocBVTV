@@ -20,18 +20,11 @@ class RoleController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    // protected RoleService $roleService;
-
-    // public function __construct(RoleService $roleService)
-    // {
-    //     $this->roleService = $roleService;
-    // }
+      */
 
     public function index()
     {
         $roles = Role::paginate(5);
-        // $roles = $this->roleService->getWithGroup();
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -55,11 +48,10 @@ class RoleController extends Controller
     public function store(CreateRoleRequest $request)
     {
         $dataCreate = $request->all();
-        $dataCreate['guard_name'] = 'web';
-        $role = Role::create($dataCreate);
+         $dataCreate['guard_name'] = 'web';
+         $role = Role::create($dataCreate);
         $role->permissions()->attach($dataCreate['permission_ids']);
-        // $this->roleService->create($request);
-        return to_route('roles.index')->with(['message' => 'Thêm mới thành công.']);
+     return to_route('roles.index')->with(['message' => 'Thêm mới thành công.']);
     }
 
     /**
@@ -82,7 +74,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::with('permissions') ->findOrFail($id);
-        $permissions = Permisson::all()->groupBy('group');
+        $permissions = Permisson::all()->groupBy('group');   
         return view('admin.roles.edit', compact('role', 'permissions'));
     }
 

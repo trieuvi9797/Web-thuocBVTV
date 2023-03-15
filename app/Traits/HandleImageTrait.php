@@ -1,11 +1,12 @@
 <?php
 namespace App\Traits;
+
 use Image;
 
-trait HandleImageTrait
+trait  HandleImageTrait
 {
     protected $path = 'upload/users/';
-
+    
     public function veryfy($request)
     {
         return $request->has('image');
@@ -13,11 +14,14 @@ trait HandleImageTrait
     public function saveImage($request)
     {
         if($this->veryfy($request)){
-            $file = $request->file('image');
-            $name = time().$file->getClientOriginalName();
-            $extension = $file->getClientOriginaExtension();
-            $image = Image::make($file)->resize(300,300);
-            Strorage::put($this->path.$name, $image);
+            // $file = $request->file('image'); 
+            // $name = time().$file->getClientOriginalName();
+            // $extension = $file->getClientOriginaExtension();
+            // $image = Image::make($file)->resize(300,300);
+            // Strorage::put($this->path.$name, $image);
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save($this->path . $name);
             return $name;
         }
     }
@@ -39,3 +43,5 @@ trait HandleImageTrait
     }
 
 }
+
+

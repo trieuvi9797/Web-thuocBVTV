@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\CreateUserRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +57,9 @@ class UserController extends Controller
         $dataCreate['image'] = $this->user->saveImage($request); 
 
         $user = $this->user->create($dataCreate);
-        return to_route('users.index')->with(['massage', 'Thêm thành công.'])
+        $user->image()->create(['url'=> $dataCreate['image']]);
+        $user->role()->attach($dataCreate['role_ids']);
+        return to_route('users.index')->with(['massage', 'Thêm thành công.']);
     }
 
     /**
@@ -77,7 +81,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user->findOrFail($id)->load('roles');
+        $roles = $this->role->all()->groupBy('group');
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -87,9 +93,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $dataUpdate = $request->except('password');
+        if($request->password)
+        {
+            $dataUpdate['password'] = Hash::make($request->password);
+        }
+        $currentImage = $user->images ? $user->images->first()->url : '';
+        $dataUpdate['image'] = $this->user->updateImage($request, $currentImage); 
+        $user = $this->user->findOrFail($id)->load('roles');
+
+        $user->update($dataUpdate);
+        $user->image()->updateOrCreate(['url'=> $dataUpdate['image']]);
+        $user->role()->sync($dataUpdate['role_ids']);
+        return to_route('users.index')->with(['massage', 'Cập nhật thành công.']);
     }
 
     /**
@@ -100,6 +118,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return to_route('users.index')->with(['message'=>'Xóa thành công!']);
     }
 }

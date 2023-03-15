@@ -62,6 +62,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Hình ảnh</th>
                                     <th>Tên</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
@@ -73,6 +74,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
+                                    <td><img src="{{ $item->images ? asset('upload/users/'.$item->images->first()->url) : 'default.png' }}" width="100px" height="100px" alt=""></td>                                        
                                     <td>{{ $item->name }}</td>                                        
                                     <td>{{ $item->email }}</td>  
                                     <td>{{ $item->phone }}</td>  

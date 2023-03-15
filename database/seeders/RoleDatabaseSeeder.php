@@ -17,39 +17,43 @@ class RoleDatabaseSeeder extends Seeder
     public function run()
     {
         $roles = [
-            ['name' => 'super admin', 'display_name' => 'super admin', 'group' => 'system'],
-            ['name' => 'admin', 'display_name' => 'admin', 'group' => 'system'],
+            ['name' => 'super-admin', 'display_name' => 'Super Admin', 'group' => 'system'],
+            ['name' => 'admin', 'display_name' => 'Admin', 'group' => 'system'],
+
             ['name' => 'employee', 'display_name' => 'employee', 'group' => 'system'],
+
             ['name' => 'manager', 'display_name' => 'manager', 'group' => 'system'],
+
             ['name' => 'user', 'display_name' => 'user', 'group' => 'system'],
+
         ];
         foreach ($roles as $role) {
             Role::updateOrCreate($role);
         }
 
         $permissions = [
-            ['name' => 'create-user', 'display_name' => 'Create user', 'group' => 'User'],
-            ['name' => 'update-user', 'display_name' => 'Update user', 'group' => 'User'],
-            ['name' => 'show-user', 'display_name' => 'Show user', 'group' => 'User'],
-            ['name' => 'delete-user', 'display_name' => 'Delete user', 'group' => 'User'],
+            ['name' => 'Tạo tài khoản', 'display_name' => 'Tạo  tài khoản', 'group' => 'Tài khoản'],
+            ['name' => 'Cập nhật tài khoản', 'display_name' => 'Cập nhật  tài khoản', 'group' => 'Tài khoản'],
+            ['name' => 'Xem tài khoản', 'display_name' => 'Xem  tài khoản', 'group' => 'Tài khoản'],
+            ['name' => 'Xóa tài khoản', 'display_name' => 'Xóa  tài khoản', 'group' => 'Tài khoản'],
             
-            ['name' => 'create-role', 'display_name' => 'Create role', 'group' => 'role'],
-            ['name' => 'update-role', 'display_name' => 'Update role', 'group' => 'role'],
-            ['name' => 'show-role', 'display_name' => 'Show role', 'group' => 'role'],
-            ['name' => 'delete-role', 'display_name' => 'Delete role', 'group' => 'role'],
+            ['name' => 'Tạo quyền hạn', 'display_name' => 'Tạo  quyền hạn', 'group' => 'Quyền hạn'],
+            ['name' => 'Cập nhật quyền hạn', 'display_name' => 'Cập nhật  quyền hạn', 'group' => 'Quyền hạn'],
+            ['name' => 'Xem quyền hạn', 'display_name' => 'Xem  quyền hạn', 'group' => 'Quyền hạn'],
+            ['name' => 'Xóa quyền hạn', 'display_name' => 'Xóa  quyền hạn', 'group' => 'Quyền hạn'],
             
-            ['name' => 'create-category', 'display_name' => 'Create category', 'group' => 'category'],
-            ['name' => 'update-category', 'display_name' => 'Update category', 'group' => 'category'],
-            ['name' => 'show-category', 'display_name' => 'Show category', 'group' => 'category'],
-            ['name' => 'delete-category', 'display_name' => 'Delete category', 'group' => 'category'],
+            ['name' => 'Tạo danh mục', 'display_name' => 'Tạo  danh mục', 'group' => 'Danh mục'],
+            ['name' => 'Cập nhật danh mục', 'display_name' => 'Cập nhật  danh mục', 'group' => 'Danh mục'],
+            ['name' => 'Xem danh mục', 'display_name' => 'Xem  danh mục', 'group' => 'Danh mục'],
+            ['name' => 'Xóa danh mục', 'display_name' => 'Xóa  danh mục', 'group' => 'Danh mục'],
             
-            ['name' => 'create-product', 'display_name' => 'Create product', 'group' => 'product'],
-            ['name' => 'update-product', 'display_name' => 'Update product', 'group' => 'product'],
-            ['name' => 'show-product', 'display_name' => 'Show product', 'group' => 'product'],
-            ['name' => 'delete-product', 'display_name' => 'Delete product', 'group' => 'product'],
+            ['name' => 'Tạo sản phẩm', 'display_name' => 'Tạo sản phẩm', 'group' => 'Sản phẩm'],
+            ['name' => 'Cập nhật sản phẩm', 'display_name' => 'Cập nhật sản phẩm', 'group' => 'Sản phẩm'],
+            ['name' => 'Xem sản phẩm', 'display_name' => 'Xem sản phẩm', 'group' => 'Sản phẩm'],
+            ['name' => 'Xóa sản phẩm', 'display_name' => 'Xóa sản phẩm', 'group' => 'Sản phẩm'],
     
-            ['name' => 'list-order', 'display_name' => 'list order', 'group' => 'orders'],
-            ['name' => 'update-order-status', 'display_name' => 'Update order status', 'group' => 'orders'],
+            ['name' => 'Danh sách đơn hàng', 'display_name' => 'Danh sách đơn hàng', 'group' => 'Đơn hàng'],
+            ['name' => 'Cập nhật trạng thái đơn hàng', 'display_name' => 'Cập nhật order status', 'group' => 'Đơn hàng'],
     
         ];
         foreach ($permissions as $item){

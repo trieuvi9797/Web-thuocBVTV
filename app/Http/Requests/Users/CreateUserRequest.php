@@ -25,11 +25,11 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required',
-            'gander' => 'required',
-            'image' => 'nullable|required|image|mimes:png,jpg,PNG,jpec',
-            'password' => 'required|min:6',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|unique:users,phone',
+            'gender' => 'required',
+            'image' => 'nullable|required|image|mimes:png,jpg,PNG,jpec',
+            'password' => 'required|min:6'
         ];
     }
 }
