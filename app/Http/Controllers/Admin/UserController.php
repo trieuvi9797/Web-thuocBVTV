@@ -57,10 +57,11 @@ class UserController extends Controller
         $dataCreate['image'] = $this->user->saveImage($request); 
 
         $user = $this->user->create($dataCreate);
-        $user->image()->create(['url'=> $dataCreate['image']]);
-        $user->role()->attach($dataCreate['role_ids']);
+        $user->images()->create(['url'=> $dataCreate['image']]);
+        $user->roles()->attach($dataCreate['role_ids']);
         return to_route('users.index')->with(['massage', 'Thêm thành công.']);
-    }
+
+	}
 
     /**
      * Display the specified resource.
@@ -96,17 +97,17 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $dataUpdate = $request->except('password');
+        $user = $this->user->findOrFail($id)->load('roles');
         if($request->password)
         {
             $dataUpdate['password'] = Hash::make($request->password);
         }
         $currentImage = $user->images ? $user->images->first()->url : '';
         $dataUpdate['image'] = $this->user->updateImage($request, $currentImage); 
-        $user = $this->user->findOrFail($id)->load('roles');
 
         $user->update($dataUpdate);
-        $user->image()->updateOrCreate(['url'=> $dataUpdate['image']]);
-        $user->role()->sync($dataUpdate['role_ids']);
+        $user->images()->updateOrCreate(['url'=> $dataUpdate['image']]);
+        $user->roles()->sync($dataUpdate['role_ids']);
         return to_route('users.index')->with(['massage', 'Cập nhật thành công.']);
     }
 

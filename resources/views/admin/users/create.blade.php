@@ -9,21 +9,9 @@
             <div class="col-8 col-md-4">
                 <h1 class="app-page-title">Thêm tài khoản</h1>
                 <div class="col-5">
-                    {{-- <img src="" id="show-image" alt=""> --}}
-                    <img src="" id="showIMG" alt="" width="300px" height="300px">
-                    <!--js image-->
-                    <script>
-                        var loadFile = function(event) {
-                        var reader = new FileReader();
-                        reader.onload = function(){
-                            var showIMG = document.getElementById('showIMG');
-                            showIMG.src = reader.result;
-                        };
-                        reader.readAsDataURL(event.target.files[0]);
-                    };
-                    </script>
-                    <!--js image-->    
+                    <img src="" id="show-image" alt="" width="300px" height="400px">   
                 </div>
+                
             </div>
             <div class="col-12 col-md-8">
                 <div class="app-card app-card-settings shadow-sm p-4">
@@ -32,18 +20,6 @@
                         <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="row">
-                                <div class="mb-3">
-                                    <label for="image" class="form-label">Hình ảnh</label>
-                                    <input type="file" accept="image/*" name="image" id="image-input" class="form-control" onchange="loadFile(event)">
-
-                                    {{-- <input type="file" accept="image/*" name="image" class="form-control" id="image-input" value="{{ old('image') }}" required> --}}
-                                    @error('image')
-                                        <span class="text-danger"> {{ $message }}</span>
-                                    @enderror
-                                </div>
-                                
-                            </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Họ và tên:</label>
                                 <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
@@ -51,6 +27,13 @@
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Hình ảnh</label>
+                                <input type="file" accept="image/*" name="image" id="image-input" class="form-control">
+                                @error('image')
+                                    <span class="text-danger"> {{ $message }}</span>
+                                @enderror
+                            </div> 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
@@ -91,11 +74,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Vai trò</label>
-                                <div class="row">
+                                <div class="container">
                                     @foreach ($roles as $groupName => $role)
-                                        <div class="col-2">
+                                        <div class="row row-cols-4">
                                             <h4>{{ $groupName }}</h4>
-                                            <div>
+                                            <div class="col">
                                                 @foreach ($role as $item)
                                                     <div class="form-check">
                                                         <input class="form-check-input" name="role_ids[]" type="checkbox"
@@ -117,4 +100,25 @@
         </div><!--//row-->
     </div><!--//container-fluid-->
 </div><!--//app-content-->
+@endsection
+@section('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#show-image').attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#image-input").change(function() {
+                readURL(this);
+            });
+        });
+    </script>
 @endsection
