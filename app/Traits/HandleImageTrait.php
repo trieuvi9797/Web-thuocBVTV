@@ -37,7 +37,7 @@ trait  HandleImageTrait
     }
     public function deleteImage($imageName)
     {
-        if(file_exists($this->path.$imageName))
+        if($imageName && file_exists($this->path.$imageName))
         {
             unlink($this->path.$imageName);
         }

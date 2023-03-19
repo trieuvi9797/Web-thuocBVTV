@@ -57,7 +57,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Giới tính:</label>
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" multiple>
                                     <option value="male">Nam</option>
                                     <option value="fe-male">Nữ</option>        
                                 </select>

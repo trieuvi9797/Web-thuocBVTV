@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests\CAtegories;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Unique;
 
-class UpdateUserRequest extends FormRequest
+class CreateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +25,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'phone' => 'required|unique:users,phone,'.$this->user,
-            'gender' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,PNG,jpeg',
-            'password' => 'nullable|min:6',
-            'email'=> 'unique:users,email,'.$this->user,
+            'name' => 'required|unique:categories,name',
         ];
     }
 }

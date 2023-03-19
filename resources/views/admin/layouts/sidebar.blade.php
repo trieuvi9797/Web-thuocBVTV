@@ -21,7 +21,7 @@
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">   <!--Danh mục-->                  
-                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
+                    <a class="nav-link  {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="{{ route('categories.index') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
@@ -29,18 +29,9 @@
                             </svg>
                         </span>
                         <span class="nav-link-text">Danh mục</span>
-                        <span class="submenu-arrow">
-                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </span><!--//submenu-arrow-->
+                        
                     </a><!--//nav-link-->
-                    <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
-                        <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="">Danh sách danh mục</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="">Thêm danh mục</a></li>
-                        </ul>
-                    </div>
+                    
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">   <!--Sản phẩm-->                  

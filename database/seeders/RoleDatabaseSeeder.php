@@ -17,14 +17,10 @@ class RoleDatabaseSeeder extends Seeder
     public function run()
     {
         $roles = [
-            ['name' => 'super-admin', 'display_name' => 'Super Admin', 'group' => 'system'],
-            ['name' => 'admin', 'display_name' => 'Admin', 'group' => 'system'],
-
-            ['name' => 'employee', 'display_name' => 'employee', 'group' => 'system'],
-
-            ['name' => 'manager', 'display_name' => 'manager', 'group' => 'system'],
-
-            ['name' => 'user', 'display_name' => 'user', 'group' => 'system'],
+            ['name' => 'admin', 'display_name' => 'Admin', 'group' => 'Hệ thống'],            
+            ['name' => 'Quản lý', 'display_name' => 'Quản lý', 'group' => 'Hệ thống'],
+            ['name' => 'Nhân viên', 'display_name' => 'Nhân viên', 'group' => 'Hệ thống'],
+            ['name' => 'Người dùng', 'display_name' => 'Người dùng', 'group' => 'Hệ thống'],
 
         ];
         foreach ($roles as $role) {

@@ -66,26 +66,25 @@
                                     <th>Tên</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th colspan="2"></th>
                                 </tr>
                             </thead>
                             @foreach ($users as $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
-                                    <td><img src="{{ $item->images ? asset('/upload/users/'.$item->images->first()->url) : '/upload/users/default.png' }}" width="80px" height="80px" alt=""></td>                                        
+                                    <td><img src="{{ $item->images->count() > 0 ? asset('/upload/users/'.$item->images->first()->url) : '/upload/users/default.png' }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->name }}</td>                                        
                                     <td>{{ $item->email }}</td>  
                                     <td>{{ $item->phone }}</td>  
                                     <td>
-                                        <a href="{{ route('users.edit', $item->id) }}" class="btn btn-outline-warning">Sửa</a>
+                                        <a href="{{ route('users.edit', $item->id) }}" class="btn btn-outline-warning" style="float: right">Sửa</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('users.destroy', $item->id) }}" id="form-delete{{ ($item->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-outline-danger">Xóa</button>
+                                            <button class="btn btn-outline-danger" type="submit">Xóa</button>
                                         </form>
                                     </td>                                     
                                 </tr>

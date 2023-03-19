@@ -57,9 +57,10 @@ class UserController extends Controller
         $dataCreate['image'] = $this->user->saveImage($request); 
 
         $user = $this->user->create($dataCreate);
+        $user->images()->delete();
         $user->images()->create(['url'=> $dataCreate['image']]);
         $user->roles()->attach($dataCreate['role_ids']);
-        return to_route('users.index')->with(['massage', 'Thêm thành công.']);
+        return to_route('users.index')->with(['message', 'Thêm thành công.']);
 
 	}
 
@@ -102,13 +103,13 @@ class UserController extends Controller
         {
             $dataUpdate['password'] = Hash::make($request->password);
         }
-        $currentImage = $user->images ? $user->images->first()->url : '';
+        $currentImage = $user->images->count() > 0 ? $user->images->first()->url : '';
         $dataUpdate['image'] = $this->user->updateImage($request, $currentImage); 
 
         $user->update($dataUpdate);
         $user->images()->updateOrCreate(['url'=> $dataUpdate['image']]);
-        $user->roles()->sync($dataUpdate['role_ids']);
-        return to_route('users.index')->with(['massage', 'Cập nhật thành công.']);
+        $user->roles()->sync($dataUpdate['role_ids'] ?? []);
+        return to_route('users.index')->with(['message', 'Cập nhật thành công.']);
     }
 
     /**
@@ -119,7 +120,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $user = $this->user->findOrFail($id)->load('roles');
+        $user->images()->delete();
+        $imageName = $user->images->count() > 0 ? $user->images->first()->url : '';
+        $this->user->deleteImage($imageName);
+        $user->delete();
         return to_route('users.index')->with(['message'=>'Xóa thành công!']);
     }
 }
