@@ -94,3 +94,7 @@
     </div><!--//container-fluid-->
  
 @endsection
+@section('script')
+
+
+@endsection

@@ -35,7 +35,7 @@
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">   <!--Sản phẩm-->                  
-                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
+                    <a class="nav-link  {{ request()->routeIs('products') ? 'active' : '' }}" href="{{ route('products.index') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -46,19 +46,7 @@
                             </svg>
                         </span>
                         <span class="nav-link-text">Sản phẩm</span>
-                        <span class="submenu-arrow">
-                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                         </span><!--//submenu-arrow-->
                     </a><!--//nav-link-->
-                    <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
-                        <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="/admin/product/list">Danh sách sản phẩm</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="/admin/product/add">Thêm sản phẩm</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="settings.html">Settings</a></li>
-                        </ul>
-                    </div>
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">   <!--Đơn hàng-->               
