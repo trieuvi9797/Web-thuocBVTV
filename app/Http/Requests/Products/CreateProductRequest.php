@@ -29,6 +29,7 @@ class CreateProductRequest extends FormRequest
             'sale' => 'required',
             'price' => 'required',
             'category_ids' => 'required',
+            'quantity' => 'required',
         ];
     }
 }

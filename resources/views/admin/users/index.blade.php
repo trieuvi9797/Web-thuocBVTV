@@ -73,7 +73,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
-                                    <td><img src="{{ $item->images->count() > 0 ? asset('/upload/users/'.$item->images->first()->url) : '/upload/users/default.png' }}" width="80px" height="80px" alt=""></td>                                        
+                                    <td><img src="{{ $item->images->count() > 0 ? asset('/upload/'.$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->name }}</td>                                        
                                     <td>{{ $item->email }}</td>  
                                     <td>{{ $item->phone }}</td>  

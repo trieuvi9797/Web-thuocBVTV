@@ -28,11 +28,13 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Danh mục:</label>
-                    <select name="category" class="form-control" multiple>
-                        <option value="male">Nam</option>
-                        <option value="fe-male">Nữ</option>        
+                    <select name="category_ids[]" class="form-control">
+                        <option value="">-- Chọn danh mục --</option>
+                        @foreach($categories as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>        
+                        @endforeach
                     </select>
-                    @error('gender')
+                    @error('category_ids')
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
                 </div>                            
@@ -50,24 +52,40 @@
                     @error('phone')
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
-                </div>                
+                </div>    
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Số lượng:</label>
+                    <input type="number" name="quantity" class="form-control" id="quantity" value="{{ old('quantity') }}" required>
+                    @error('quantity')
+                        <span class="text-danger"> {{ $message }}</span>
+                    @enderror
+                </div>             
                 <div class="mb-3">
                     <label for="description" class="form-label">Mô tả:</label>
-                    <textarea name="description" id="description" style="width:100%" rows="5" class="form-control">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" rows="30" cols="80" class="form-control">{{ old('description') }}</textarea>
                     @error('description')
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
-                </div>                    
+                </div>   
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#description' ) )
+                        .then(description => {
+                            console.log(description);
+                        })
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script> 
+                {{-- <script>
+                    CKEDITOR.replace( 'description' );
+                </script>                 --}}
                 <button type="submit" class="btn app-btn-primary" >Lưu</button>
             </form>
         </div><!--//app-card-->
     </div>
 </div><!--//app-content-->
-@endsection
-@section('script')
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
-    <script>
+<script>
         $(() => {
             function readURL(input) {
                 if (input.files && input.files[0]) {
@@ -84,4 +102,11 @@
             });
         });
     </script>
+@endsection
+@section('script')
+
+
+
+
+
 @endsection

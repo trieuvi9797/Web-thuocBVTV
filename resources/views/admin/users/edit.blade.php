@@ -9,7 +9,7 @@
             <div class="col-8 col-md-4">
                 <h1 class="app-page-title">Cập nhật tài khoản</h1>
                 <div class="col-5">
-                    <img src="{{ $user->images->count() > 0 ? asset('/upload/users/'.$user->images->first()->url) : '/upload/users/default.png' }}" id="show-image" alt="" width="300px" height="400px">   
+                    <img src="{{ $user->images->count() > 0 ? asset('/upload/'.$user->images->first()->url) : '/upload/default.png' }}" id="show-image" alt="" width="300px" height="400px">   
                 </div>
                 
             </div>

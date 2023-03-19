@@ -102,20 +102,6 @@
  
 @endsection
 @section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script src="{{ asset('plugin/ckeditor5-build-classic/ckeditor.js') }}"></script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#description'),{
 
-        })
-        .then(editor => {
-            window.editor = editor;
-        })
-        .catch( err => {
-            console.error(err.stack);
-        });
-        
-</script>
 
 @endsection

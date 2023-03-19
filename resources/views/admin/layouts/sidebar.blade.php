@@ -3,7 +3,7 @@
     <div class="sidepanel-inner d-flex flex-column">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding">
-            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('/admin/assets/images/Logo-VTNN.png') }}" alt="logo"><span class="logo-text">VTNN-KHAI-MAI</span></a>
+            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('/admin/assets/images/LogoVTNN.jpg') }}" alt="logo"><span class="logo-text">VTNN - KHAI MAI</span></a>
         </div><!--//app-branding-->  
         
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
