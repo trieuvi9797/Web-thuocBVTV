@@ -16,23 +16,30 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route client
 Route::get('/', function () {
     return view('client.home.index');
 });
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard.index');
-})->name('dashboard');
-
 Route::get('/home', function () {
     return view('client.home.index');
 });
 
-Auth::routes();
+Route::get('product/{category_ids', [ClientProductController::class, 'index'])->name('client.products.index');
+Route::get('product-detail/{id', [ClientProductController::class, 'show'])->name('client.products.show');
 
-Route::resource('roles', RoleController::class);
-Route::resource('users', UserController::class);
-Route::resource('categories', CategoryController::class);
-Route::resource('products', ProductController::class);
+
+Auth::routes();
+// Route admin
+Route::middleware('auth')->group(function(){
+    
+    Route::get('/dashboard', function() {
+        return view('admin.dashboard.index');
+    })->name('dashboard');
+    
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+});
+
 
