@@ -3,37 +3,23 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
-use App\Models\CartProduct;
-use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class ProductController extends Controller
 {
-    protected $cart;
     protected $product;
-    protected $cartProduct;
-    protected $order;
-
-    public function __construct(Cart $cart, Product $product, CartProduct $cartProduct, Order $order)
+    public function __construct(Product $product)
     {
-        $this->cart = $cart;
         $this->product = $product;
-        $this->cartProduct = $cartProduct;
-        $this->order = $order;
     }
-    public function index()
+    public function index(Request $request, $category_id)
     {
-        $cart = $this->cart->firtOrCreateBy(auth()->user()->id)->load('products');
-        return view('client.products.index', compact('cart'));
+        $products = $this->product->getBy($request->all(), $category_id);
+        return view('client.products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //

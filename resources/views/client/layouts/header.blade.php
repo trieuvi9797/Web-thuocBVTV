@@ -59,17 +59,17 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a>
+                <li class="active"><a href="{{ route('client.home.index') }}">Trang chủ</a></li>
+                <li><a href="{{ route('client.products.index') }}">Sản phẩm</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="">Shop Details</a></li>
                         <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                         <li><a href="./checkout.html">Check Out</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./shop-grid.html">Tin nông nghiệp</a></li>
-                <li><a href="./blog.html">Liên hệ</a></li>
+                <li><a href="">Tin nông nghiệp</a></li>
+                <li><a href="">Liên hệ</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -134,17 +134,17 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Trang chủ</a></li>
-                            <li><a href="#">Sản phẩm</a>
+                            <li class="active"><a href="{{ route('client.home.index') }}">Trang chủ</a></li>
+                            <li><a href="{{ route('client.products.index') }}">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./shop-grid.html">Tin nông nghiệp</a></li>
-                            <li><a href="./blog.html">Liên hệ</a></li>
+                            <li><a href="">Tin nông nghiệp</a></li>
+                            <li><a href="">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>

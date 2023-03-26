@@ -67,7 +67,14 @@
                         <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>Tình trạng</b> <span>còn hàng</span></li>
+                            <li><b>Tình trạng</b> 
+                                @if ($product->details->count()>0)
+                                    <span>còn hàng</span>
+                                @else    
+                                   <span>Hết hàng</span>
+                                @endif
+                                <span></span>
+                            </li>
                             <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Free pickup today</samp></span></li>
                             <li><b>Chia sẽ</b>
                                 <div class="share">
